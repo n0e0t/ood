@@ -26,7 +26,7 @@ class stack:
     return len(self.item)
 
   def push(self,item):
-    self.item.insert(0,item)
+    self.item.append(item)
 
   def peek(self):
     if len(self) == 0:
@@ -59,4 +59,4 @@ for i in values:
         print(result.ontop().split()[1])
         result.pop()
     
-    result.item.append(i)
+    result.push(i)

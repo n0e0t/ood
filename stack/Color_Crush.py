@@ -28,15 +28,15 @@ class stack:
     return len(self.item)
 
   def push(self,item):
-    self.item.insert(0,item)
+    self.item.append(item)
 
   def peek(self):
-    if len(self) == 0:
+    if len(self.item) == 0:
       raise Exception("peek() called on empty stack.")
     return self.item[0]
 
   def pop(self):
-    if len(self) == 0:
+    if len(self.item) == 0:
       raise Exception("pop() called on empty stack.")
     return self.item.pop()
 
@@ -51,6 +51,7 @@ class stack:
 
   def ontop(self):
     return self.item[-2:]
+  
 result = stack()
 values = input('Enter Input : ').split()
 combos = 0
@@ -63,7 +64,7 @@ for i in values :
         combos += 1
         c=1
     if  c == 0:
-        result.item.append(i)
+        result.push(i)
 
 print(len(result.item))
 if len(result.item) > 0:
