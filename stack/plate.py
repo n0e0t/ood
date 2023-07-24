@@ -18,45 +18,38 @@
     3
 '''
 
-class stack:
-  def __init__(self):
-    self.item = []
+class Stack:
+    def __init__(self):
+        self.item = []
+    
+    def is_Empty(self):
+        return len(self.item) == 0
+    
+    def pop(self):
+        if self.is_Empty():
+            return -1
+        return self.item.pop()
+    
+    def push(self,new):
+        self.item.append(new)
 
-  def __len__(self):
-    return len(self.item)
-
-  def push(self,item):
-    self.item.append(item)
-
-  def peek(self):
-    if len(self) == 0:
-      raise Exception("peek() called on empty stack.")
-    return self.item[0]
-
-  def pop(self):
-    if len(self) == 0:
-      raise Exception("pop() called on empty stack.")
-    return self.item.pop()
-
-  def __str__(self):
-    return str(self.item)
-
-  def isEmpty(self):
-    if len(self.item)== 0:
-        return True   
-    else:
-        return False
-
-  def ontop(self):
-    return self.item[-1]
-
+    def size(self):
+        return len(self.item)
+    
+    def peek(self):
+        return self.item[-1]
+    
+    def __str__(self) -> str:
+        return ''.join(self.item)
+    
 values = input('Enter Input : ').split(',')
-result = stack()
+result = Stack()
 
 for i in values:
     w =  i.split()[0]
-    while result.isEmpty() == False and int(result.ontop().split()[0]) < int(w):
-        print(result.ontop().split()[1])
+    while result.is_Empty() == False and int(result.peek().split()[0]) < int(w):
+        print(result.peek().split()[1])
         result.pop()
     
     result.push(i)
+    
